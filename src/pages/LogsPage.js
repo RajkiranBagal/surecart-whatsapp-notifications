@@ -96,7 +96,7 @@ export default function LogsPage() {
 				</div>
 			) : logs.length === 0 ? (
 				<EmptyState
-					icon="\uD83D\uDCCB"
+					icon="📋"
 					title={ __( 'No notifications yet', 'scwa' ) }
 					description={ __(
 						'Notifications will appear here once SureCart orders start coming in.',

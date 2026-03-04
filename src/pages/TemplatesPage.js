@@ -79,7 +79,7 @@ export default function TemplatesPage() {
 	if ( templates.length === 0 ) {
 		return (
 			<EmptyState
-				icon="\uD83D\uDCDD"
+				icon="📝"
 				title={ __( 'No templates found', 'scwa' ) }
 				description={ __(
 					'Templates will be created automatically when you activate the plugin.',

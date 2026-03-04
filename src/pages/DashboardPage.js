@@ -67,7 +67,7 @@ export default function DashboardPage( { onNavigate } ) {
 	if ( ! isConfigured ) {
 		return (
 			<EmptyState
-				icon="\uD83D\uDCF1"
+				icon="📱"
 				title={ __( 'Connect Your WhatsApp Business', 'scwa' ) }
 				description={ __(
 					'Enter your Meta Cloud API credentials in Settings to start sending WhatsApp notifications.',
