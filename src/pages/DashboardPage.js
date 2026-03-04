@@ -3,6 +3,7 @@
  */
 import { Spinner } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
+import { check, closeSmall, notAllowed, chartBar } from '@wordpress/icons';
 import useStats from '../hooks/useStats';
 import useSettings from '../hooks/useSettings';
 import StatCard from '../components/StatCard';
@@ -104,26 +105,26 @@ export default function DashboardPage( { onNavigate } ) {
 
 			<div className="scwa-stats-grid">
 				<StatCard
-					icon="\u2713"
+					icon={ check }
 					label={ __( 'Sent', 'scwa' ) }
 					count={ counts.sent }
 					trend={ trend }
 					color="green"
 				/>
 				<StatCard
-					icon="\u2715"
+					icon={ closeSmall }
 					label={ __( 'Failed', 'scwa' ) }
 					count={ counts.failed }
 					color="red"
 				/>
 				<StatCard
-					icon="\u2298"
+					icon={ notAllowed }
 					label={ __( 'Skipped', 'scwa' ) }
 					count={ counts.skipped }
 					color="gray"
 				/>
 				<StatCard
-					icon="\u2211"
+					icon={ chartBar }
 					label={ __( 'Total', 'scwa' ) }
 					count={ counts.total }
 					color="blue"
