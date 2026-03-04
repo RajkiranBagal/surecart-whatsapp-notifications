@@ -39,7 +39,7 @@ spl_autoload_register(
 
 		$class       = str_replace( $namespace . '\\', '', $class_name );
 		$class_parts = explode( '\\', $class );
-		$class_file  = 'class-' . strtolower( array_pop( $class_parts ) ) . '.php';
+		$class_file  = 'class-' . strtolower( preg_replace( '/([a-z])([A-Z])/', '$1-$2', array_pop( $class_parts ) ) ) . '.php';
 
 		$path = SCWA_PLUGIN_DIR . 'includes' . DIRECTORY_SEPARATOR
 			. implode( DIRECTORY_SEPARATOR, $class_parts ) . DIRECTORY_SEPARATOR . $class_file;
