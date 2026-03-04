@@ -312,13 +312,8 @@ class RestApi {
 			);
 		}
 
-		$message = sprintf(
-			/* translators: %s: store name */
-			__( 'This is a test message from %s WhatsApp Notifications plugin. If you received this, your setup is working correctly!', 'scwa' ),
-			get_bloginfo( 'name' )
-		);
-
-		$result = $provider->send_text( $normalized, $message );
+		$message = __( 'Template: hello_world (en_US)', 'scwa' );
+		$result  = $provider->send_template( $normalized, 'hello_world', 'en_US', array() );
 
 		NotificationLogger::log(
 			array(
@@ -326,7 +321,7 @@ class RestApi {
 				'recipient_phone' => $normalized,
 				'recipient_type'  => 'admin',
 				'order_id'        => '',
-				'template_name'   => 'test_message',
+				'template_name'   => 'hello_world',
 				'message_body'    => $message,
 				'status'          => $result['success'] ? 'sent' : 'failed',
 				'api_message_id'  => $result['message_id'] ?? '',

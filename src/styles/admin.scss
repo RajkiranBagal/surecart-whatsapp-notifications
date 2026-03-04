@@ -141,9 +141,10 @@
   }
 }
 
-.scwa-settings-save {
-  margin-top: var(--scwa-gap-lg);
-  text-align: right;
+.scwa-settings-card__footer.components-card__footer {
+  justify-content: flex-end;
+  border-top: 1px solid var(--scwa-border);
+  padding: 12px var(--scwa-gap-lg);
 
   .components-button.is-primary {
     background: var(--scwa-green-dark);

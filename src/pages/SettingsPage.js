@@ -9,6 +9,7 @@ import {
 	Card,
 	CardHeader,
 	CardBody,
+	CardFooter,
 } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import { useState, useEffect } from '@wordpress/element';
@@ -151,6 +152,16 @@ export default function SettingsPage() {
 						</Button>
 					</div>
 				</CardBody>
+				<CardFooter className="scwa-settings-card__footer">
+					<Button
+						variant="primary"
+						onClick={ handleSave }
+						isBusy={ isSaving }
+						disabled={ isSaving }
+					>
+						{ __( 'Save Settings', 'scwa' ) }
+					</Button>
+				</CardFooter>
 			</Card>
 
 			<Card className="scwa-settings-card">
@@ -168,6 +179,16 @@ export default function SettingsPage() {
 						) }
 					/>
 				</CardBody>
+				<CardFooter className="scwa-settings-card__footer">
+					<Button
+						variant="primary"
+						onClick={ handleSave }
+						isBusy={ isSaving }
+						disabled={ isSaving }
+					>
+						{ __( 'Save Settings', 'scwa' ) }
+					</Button>
+				</CardFooter>
 			</Card>
 
 			<Card className="scwa-settings-card">
@@ -244,18 +265,17 @@ export default function SettingsPage() {
 						}
 					/>
 				</CardBody>
+				<CardFooter className="scwa-settings-card__footer">
+					<Button
+						variant="primary"
+						onClick={ handleSave }
+						isBusy={ isSaving }
+						disabled={ isSaving }
+					>
+						{ __( 'Save Settings', 'scwa' ) }
+					</Button>
+				</CardFooter>
 			</Card>
-
-			<div className="scwa-settings-save">
-				<Button
-					variant="primary"
-					onClick={ handleSave }
-					isBusy={ isSaving }
-					disabled={ isSaving }
-				>
-					{ __( 'Save Settings', 'scwa' ) }
-				</Button>
-			</div>
 		</div>
 	);
 }
