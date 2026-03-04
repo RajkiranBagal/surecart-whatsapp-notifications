@@ -166,6 +166,29 @@ export default function SettingsPage() {
 
 			<Card className="scwa-settings-card">
 				<CardHeader>
+					<h3>{ __( 'Customer Phone Number Setup', 'scwa' ) }</h3>
+				</CardHeader>
+				<CardBody>
+					<Notice
+						status="info"
+						isDismissible={ false }
+					>
+						{ __( 'SureCart does not collect a phone number by default. You must add a custom checkout field so this plugin can send WhatsApp messages to customers.', 'scwa' ) }
+					</Notice>
+					<ol className="scwa-setup-steps">
+						<li>{ __( 'Open the SureCart form editor for your checkout form.', 'scwa' ) }</li>
+						<li>{ __( 'Add a custom Text or Phone field to the checkout.', 'scwa' ) }</li>
+						<li>
+							{ __( 'Set the field ID to', 'scwa' ) }{ ' ' }
+							<code className="scwa-field-id-code">scwa_whatsapp_phone</code>
+						</li>
+						<li>{ __( 'Save the form.', 'scwa' ) }</li>
+					</ol>
+				</CardBody>
+			</Card>
+
+			<Card className="scwa-settings-card">
+				<CardHeader>
 					<h3>{ __( 'Admin Notifications', 'scwa' ) }</h3>
 				</CardHeader>
 				<CardBody>

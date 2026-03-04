@@ -667,3 +667,44 @@
 .scwa-templates-page .components-notice {
   margin: 0 0 var(--scwa-gap-lg) 0;
 }
+
+// Setup guide steps
+.scwa-setup-steps {
+  margin: var(--scwa-gap) 0 0 0;
+  padding-left: 24px;
+
+  li {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 8px;
+  }
+}
+
+// Code badge for field ID
+.scwa-field-id-code {
+  display: inline-block;
+  font-family: monospace;
+  font-size: 13px;
+  background: var(--scwa-green-light);
+  color: var(--scwa-green-dark);
+  padding: 2px 8px;
+  border-radius: 4px;
+  user-select: all;
+}
+
+// Dashboard phone notice
+.scwa-dashboard-notice {
+  margin-bottom: var(--scwa-gap-lg);
+
+  code {
+    font-family: monospace;
+    font-size: 12px;
+    background: var(--scwa-surface-alt);
+    padding: 1px 6px;
+    border-radius: 3px;
+  }
+}
+
+.scwa-dashboard .components-notice {
+  margin: 0 0 var(--scwa-gap-lg) 0;
+}

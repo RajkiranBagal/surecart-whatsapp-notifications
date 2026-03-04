@@ -43,7 +43,17 @@ class CheckoutDataExtractor {
 			$customer_phone = $checkout->getAttribute( 'phone' ) ?? '';
 		}
 
-		// Fallback: direct checkout properties.
+		// Fallback 1: checkout metadata custom phone field.
+		if ( empty( $customer_phone ) ) {
+			$metadata = $checkout->getAttribute( 'metadata' );
+			if ( is_object( $metadata ) && ! empty( $metadata->{SCWA_CHECKOUT_PHONE_META_KEY} ) ) {
+				$customer_phone = (string) $metadata->{SCWA_CHECKOUT_PHONE_META_KEY};
+			} elseif ( is_array( $metadata ) && ! empty( $metadata[ SCWA_CHECKOUT_PHONE_META_KEY ] ) ) {
+				$customer_phone = (string) $metadata[ SCWA_CHECKOUT_PHONE_META_KEY ];
+			}
+		}
+
+		// Fallback 2: direct checkout properties.
 		if ( empty( $customer_phone ) ) {
 			$customer_phone = $checkout->getAttribute( 'phone' ) ?? '';
 		}

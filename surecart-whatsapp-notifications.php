@@ -23,6 +23,7 @@ define( 'SCWA_PLUGIN_FILE', __FILE__ );
 define( 'SCWA_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'SCWA_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'SCWA_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
+define( 'SCWA_CHECKOUT_PHONE_META_KEY', 'scwa_whatsapp_phone' );
 
 /**
  * PSR-4 style autoloader.

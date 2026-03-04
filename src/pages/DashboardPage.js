@@ -1,8 +1,9 @@
 /**
  * DashboardPage — overview with stats, bar chart, recent activity.
  */
-import { Spinner } from '@wordpress/components';
+import { Spinner, Notice } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
+import { useState } from '@wordpress/element';
 import { check, closeSmall, notAllowed, chartBar } from '@wordpress/icons';
 import useStats from '../hooks/useStats';
 import useSettings from '../hooks/useSettings';
@@ -54,6 +55,7 @@ export default function DashboardPage( { onNavigate } ) {
 	const { stats, isLoading: statsLoading } = useStats();
 	const { settings, isLoading: settingsLoading, testConnection } =
 		useSettings();
+	const [ phoneTipDismissed, setPhoneTipDismissed ] = useState( false );
 
 	if ( statsLoading || settingsLoading ) {
 		return (
@@ -102,6 +104,26 @@ export default function DashboardPage( { onNavigate } ) {
 				accountId={ settings?.business_account_id || '' }
 				onTestConnection={ testConnection }
 			/>
+
+			{ ! phoneTipDismissed && (
+				<div className="scwa-dashboard-notice">
+					<Notice
+						status="info"
+						isDismissible
+						onDismiss={ () => setPhoneTipDismissed( true ) }
+					>
+						{ __( 'To send WhatsApp messages to customers, add a checkout field with ID', 'scwa' ) }{ ' ' }
+						<code>scwa_whatsapp_phone</code>.{ ' ' }
+						<button
+							type="button"
+							className="scwa-link-button"
+							onClick={ () => onNavigate?.( 'settings' ) }
+						>
+							{ __( 'Learn more in Settings', 'scwa' ) }
+						</button>
+					</Notice>
+				</div>
+			) }
 
 			<div className="scwa-stats-grid">
 				<StatCard
