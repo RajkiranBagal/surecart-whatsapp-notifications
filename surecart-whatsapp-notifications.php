@@ -89,6 +89,7 @@ final class SCWA_Plugin {
 	public static function activate(): void {
 		SCWhatsApp\Logger\NotificationLogger::create_table();
 		SCWhatsApp\Logger\NotificationLogger::create_templates_table();
+		set_transient( 'scwa_activation_redirect', true, 30 );
 
 		$defaults = array(
 			'scwa_phone_number_id'          => '',
@@ -136,6 +137,8 @@ final class SCWA_Plugin {
 	 * Initialize plugin components.
 	 */
 	private function init(): void {
+		add_action( 'admin_init', array( $this, 'maybe_redirect_after_activation' ) );
+
 		$admin_page = new SCWhatsApp\Admin\AdminPage();
 		$admin_page->register();
 
@@ -150,6 +153,24 @@ final class SCWA_Plugin {
 			wp_schedule_event( time(), 'daily', 'scwa_cleanup_old_logs' );
 		}
 		add_action( 'scwa_cleanup_old_logs', array( SCWhatsApp\Logger\NotificationLogger::class, 'cleanup' ) );
+	}
+
+	/**
+	 * Redirect to Learn tab on first activation.
+	 */
+	public function maybe_redirect_after_activation(): void {
+		if ( ! get_transient( 'scwa_activation_redirect' ) ) {
+			return;
+		}
+
+		delete_transient( 'scwa_activation_redirect' );
+
+		if ( wp_doing_ajax() || isset( $_GET['activate-multi'] ) ) {
+			return;
+		}
+
+		wp_safe_redirect( admin_url( 'admin.php?page=scwa-settings&tab=learn' ) );
+		exit;
 	}
 
 	/**

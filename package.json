@@ -7,7 +7,8 @@
 		"build": "wp-scripts build",
 		"start": "wp-scripts start",
 		"lint:js": "wp-scripts lint-js",
-		"lint:css": "wp-scripts lint-style"
+		"lint:css": "wp-scripts lint-style",
+		"zip": "npm run build && rm -rf /tmp/scwa-zip && mkdir -p /tmp/scwa-zip/surecart-whatsapp-notifications && rsync -rc --exclude-from=.distignore . /tmp/scwa-zip/surecart-whatsapp-notifications && cd /tmp/scwa-zip && zip -r surecart-whatsapp-notifications.zip surecart-whatsapp-notifications && mv surecart-whatsapp-notifications.zip $OLDPWD/ && rm -rf /tmp/scwa-zip"
 	},
 	"devDependencies": {
 		"@wordpress/scripts": "^30.0.0"

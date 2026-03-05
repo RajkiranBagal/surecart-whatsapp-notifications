@@ -692,6 +692,166 @@
   user-select: all;
 }
 
+// Learn page
+.scwa-learn {
+  max-width: 800px;
+}
+
+.scwa-learn-progress {
+  margin-bottom: var(--scwa-gap-lg);
+
+  &__text {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+  }
+
+  &__bar {
+    height: 8px;
+    background: var(--scwa-surface-alt);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  &__fill {
+    height: 100%;
+    background: var(--scwa-green);
+    border-radius: 4px;
+    transition: width 0.3s ease;
+  }
+}
+
+.scwa-setup-step {
+  background: var(--scwa-surface);
+  border: 1px solid var(--scwa-border);
+  border-radius: var(--scwa-radius);
+  margin-bottom: 8px;
+  overflow: hidden;
+
+  &--complete {
+    border-color: var(--scwa-green);
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 14px 16px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    text-align: left;
+    font-size: 14px;
+    transition: background 0.15s ease;
+
+    &:hover {
+      background: var(--scwa-surface-alt);
+    }
+  }
+
+  &__number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    font-size: 13px;
+    font-weight: 600;
+    flex-shrink: 0;
+    border: 2px solid var(--scwa-border);
+    color: #646970;
+
+    .scwa-setup-step--complete & {
+      background: var(--scwa-green);
+      border-color: var(--scwa-green);
+      color: #fff;
+
+      svg {
+        fill: #fff;
+      }
+    }
+  }
+
+  &__title {
+    flex: 1;
+    font-weight: 600;
+  }
+
+  &__chevron {
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+    color: #646970;
+
+    .scwa-setup-step--open & {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__body {
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  &__content {
+    padding: 0 16px 16px 56px;
+
+    p {
+      margin: 0 0 12px 0;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    ul,
+    ol {
+      margin: 0 0 12px 0;
+      padding-left: 20px;
+
+      li {
+        font-size: 14px;
+        line-height: 1.6;
+        margin-bottom: 4px;
+      }
+    }
+
+    .components-notice {
+      margin: 0 0 12px 0;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 4px;
+    flex-wrap: wrap;
+
+    .components-external-link {
+      font-size: 14px;
+    }
+  }
+
+  &__checkbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+    font-size: 13px;
+    color: #646970;
+    cursor: pointer;
+
+    input[type="checkbox"] {
+      margin: 0;
+    }
+  }
+
+  @media (max-width: 782px) {
+    &__content {
+      padding: 0 16px 16px 16px;
+    }
+  }
+}
+
 // Dashboard phone notice
 .scwa-dashboard-notice {
   margin-bottom: var(--scwa-gap-lg);

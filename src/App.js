@@ -5,6 +5,7 @@ import { TabPanel } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import { useState, useCallback } from '@wordpress/element';
 import DashboardPage from './pages/DashboardPage';
+import LearnPage from './pages/LearnPage';
 import SettingsPage from './pages/SettingsPage';
 import TemplatesPage from './pages/TemplatesPage';
 import LogsPage from './pages/LogsPage';
@@ -13,6 +14,11 @@ const TABS = [
 	{
 		name: 'dashboard',
 		title: __( 'Dashboard', 'scwa' ),
+		className: 'scwa-tab',
+	},
+	{
+		name: 'learn',
+		title: __( 'Learn', 'scwa' ),
 		className: 'scwa-tab',
 	},
 	{
@@ -32,8 +38,17 @@ const TABS = [
 	},
 ];
 
+function getInitialTab() {
+	const params = new URLSearchParams( window.location.search );
+	const tab = params.get( 'tab' );
+	if ( tab && TABS.some( ( t ) => t.name === tab ) ) {
+		return tab;
+	}
+	return 'dashboard';
+}
+
 export default function App() {
-	const [ activeTab, setActiveTab ] = useState( 'dashboard' );
+	const [ activeTab, setActiveTab ] = useState( getInitialTab );
 
 	const handleNavigate = useCallback( ( tabName ) => {
 		setActiveTab( tabName );
@@ -43,6 +58,8 @@ export default function App() {
 		switch ( tab.name ) {
 			case 'dashboard':
 				return <DashboardPage onNavigate={ handleNavigate } />;
+			case 'learn':
+				return <LearnPage onNavigate={ handleNavigate } />;
 			case 'settings':
 				return <SettingsPage />;
 			case 'templates':

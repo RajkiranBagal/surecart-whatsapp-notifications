@@ -112,8 +112,7 @@ export default function DashboardPage( { onNavigate } ) {
 						isDismissible
 						onDismiss={ () => setPhoneTipDismissed( true ) }
 					>
-						{ __( 'To send WhatsApp messages to customers, add a checkout field with ID', 'scwa' ) }{ ' ' }
-						<code>scwa_whatsapp_phone</code>.{ ' ' }
+						{ __( 'To send WhatsApp messages to customers, add the Phone block to your SureCart checkout form and make it required.', 'scwa' ) }{ ' ' }
 						<button
 							type="button"
 							className="scwa-link-button"
